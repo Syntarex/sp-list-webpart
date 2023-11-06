@@ -1,0 +1,6 @@
+{
+    "displayAsWarning": true,
+    "removeExistingRules": true,
+    "useDefaultConfigAsBase": false,
+    "lintConfig": {}
+}

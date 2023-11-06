@@ -1,0 +1,53 @@
+{
+    "name": "spfx-2019-template",
+    "version": "0.0.1",
+    "private": true,
+    "main": "lib/index.js",
+    "engines": {
+        "node": ">=0.10.0"
+    },
+    "scripts": {
+        "prebuild": "npm run clean && npm run version-sync",
+        "preserve": "npm run clean",
+        "preship": "npm run clean && npm run version-sync",
+        "build": "gulp bundle",
+        "clean": "gulp clean && rimraf ./sharepoint/solution && rimraf ./release",
+        "trust-dev-cert": "gulp trust-dev-cert",
+        "ship": "gulp bundle --ship && gulp package-solution --ship",
+        "serve": "gulp bundle && gulp package-solution && gulp serve",
+        "version-sync": "gulp version-sync"
+    },
+    "dependencies": {
+        "@microsoft/sp-core-library": "1.4.1",
+        "@microsoft/sp-office-ui-fabric-core": "1.4.1",
+        "@microsoft/sp-webpart-base": "1.4.1",
+        "@pnp/sp": "2.14.0",
+        "lodash": "4.17.21",
+        "office-ui-fabric-react": "6.214.1",
+        "react": "16.12.0",
+        "react-dom": "16.12.0",
+        "recoil": "^0.7.7",
+        "yup": "0.29.3"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.22.15",
+        "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+        "@babel/preset-env": "^7.22.15",
+        "@babel/preset-react": "^7.22.15",
+        "@microsoft/sp-build-web": "1.4.1",
+        "@microsoft/sp-module-interfaces": "1.4.1",
+        "@microsoft/sp-webpart-workbench": "1.4.1",
+        "@types/es6-promise": "3.3.0",
+        "@types/lodash": "4.14.177",
+        "@types/react": "16.9.19",
+        "@types/react-dom": "16.9.0",
+        "@types/webpack-env": "1.13.1",
+        "@types/yup": "0.29.13",
+        "babel-loader": "8.3.0",
+        "babel-plugin-transform-object-rest-spread": "6.26.0",
+        "gulp": "3.9.1",
+        "gulp-cli": "2.3.0",
+        "rimraf": "3.0.2",
+        "typescript": "3.7.5"
+    }
+}
