@@ -1,24 +1,13 @@
 {
     "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
     "solution": {
-        "name": "spfx-2019-template-client-side-solution",
-        "id": "45d6bbd0-a98e-4642-aeaf-c88869d1515b",
+        "name": "List WebPart",
+        "id": "45d6bbd1-a98e-4242-aeaf-c77769d1515b",
         "version": "0.0.1.0",
         "includeClientSideAssets": true,
-        "skipFeatureDeployment": false,
-        "features": [
-            {
-                "title": "Application Extension - Deployment of custom action",
-                "description": "Deploys a custom action with ClientSideComponentId association",
-                "id": "6d910815-f89f-4b6e-80e6-882e5a47d4ba",
-                "version": "1.0.0.0",
-                "assets": {
-                    "elementManifests": ["elements.xml"]
-                }
-            }
-        ]
+        "skipFeatureDeployment": false
     },
     "paths": {
-        "zippedPackage": "solution/spfx-2019-template.sppkg"
+        "zippedPackage": "solution/list-webpart.sppkg"
     }
 }

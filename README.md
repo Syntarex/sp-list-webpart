@@ -1,4 +1,7 @@
-# SPFx 2019 Template
+# SP List WebPart
+
+Ein WebPart, welcher eine SharePoint-Liste anzeigen kann. Bietet mehr Funktionen als der Standard-WebPart.
+Funktioniert auf SharePoint 2019 und SharePoint Online.
 
 ## Vorbereitungen
 

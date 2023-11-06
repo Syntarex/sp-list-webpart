@@ -1,0 +1,20 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+    "id": "f8204924-b13d-451b-90a1-5cb68888cb8a",
+    "alias": "ListWebPart",
+    "componentType": "WebPart",
+    "version": "*",
+    "manifestVersion": 2,
+    "requiresCustomScript": false,
+    "preconfiguredEntries": [
+        {
+            "groupId": "1edbd9a8-0bfb-4aa2-9afd-14b8c45dd489",
+            "title": { "default": "List" },
+            "description": { "default": "Shows a SharePoint list and provides a lot of cool features." },
+            "officeFabricIconFontName": "ViewList",
+            "properties": {
+                "listName": "Testliste"
+            }
+        }
+    ]
+}
