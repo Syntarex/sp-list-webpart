@@ -1,5 +1,5 @@
 {
-    "name": "spfx-2019-template",
+    "name": "sp-list-webpart",
     "version": "0.0.1",
     "private": true,
     "main": "lib/index.js",
