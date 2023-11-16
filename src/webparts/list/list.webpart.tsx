@@ -7,7 +7,8 @@ import { RecoilInitializer } from "../../components/recoil-initializer/recoil-in
 import { log } from "../../util/log.util";
 
 export interface ListWebPartProps {
-    listName: string /** Die Liste, welche vom WebPart angezeigt wird. */;
+    listId: string | null /** Die Liste, welche vom WebPart angezeigt wird. */;
+    viewId: string | null /** Die Ansicht, der konfigurierten Liste, welche vom WebPart angezeigt wird. */;
 }
 
 export default class ListWebPart extends BaseClientSideWebPart<ListWebPartProps> {

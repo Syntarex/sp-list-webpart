@@ -5,12 +5,13 @@ import { ListWebPartProps } from "../webparts/list/list.webpart";
 export const webpartPropertiesAtom = atom<ListWebPartProps>({
     key: "webpart-properties",
     default: {
-        listName: "",
+        listId: null,
+        viewId: null,
     },
     effects: [
         ({ onSet }) => {
             onSet((properties) => {
-                log("Webpart properties changed", properties);
+                log("Webpart properties changed.", properties);
             });
         },
     ],
