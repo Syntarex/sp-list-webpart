@@ -3,7 +3,7 @@
     "solution": {
         "name": "List WebPart",
         "id": "45d6bbd1-a98e-4242-aeaf-c77769d1515b",
-        "version": "0.0.3.0",
+        "version": "0.0.4.0",
         "includeClientSideAssets": true,
         "skipFeatureDeployment": false
     },

@@ -1,0 +1,15 @@
+@import "../../style/theme";
+
+.chip {
+    width: auto;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 6px;
+    padding-right: 6px;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: $ms-color-themeLight;
+    background-color: $ms-color-themeLighter;
+    color: $ms-color-infoText;
+}
