@@ -1,6 +1,6 @@
 {
     "name": "sp-list-webpart",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "private": true,
     "main": "lib/index.js",
     "author": "Syntarex",
@@ -23,6 +23,8 @@
         "@microsoft/sp-office-ui-fabric-core": "1.4.1",
         "@microsoft/sp-webpart-base": "1.4.1",
         "@pnp/sp": "2.14.0",
+        "@uifabric/icons": "^7.9.5",
+        "dayjs": "^1.11.10",
         "lodash": "4.17.21",
         "office-ui-fabric-react": "6.214.1",
         "react": "16.12.0",
