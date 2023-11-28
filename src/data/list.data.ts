@@ -4,7 +4,7 @@ import "@pnp/sp/items";
 import "@pnp/sp/lists";
 import "@pnp/sp/views";
 import "@pnp/sp/webs";
-import { isArray, toString } from "lodash";
+import { isArray, toString, uniq } from "lodash";
 import { selector } from "recoil";
 import { log } from "../util/log.util";
 import { pageAtom } from "./ui.data";
@@ -109,7 +109,7 @@ export const listDataSelector = selector({
         const skip = (page - 1) * pageSize;
 
         // Welche Felder abgefragt werden
-        const select = fields
+        let select = fields
             .filter((each) => (each as any)["odata.type"])
             .map((each) => {
                 const type = (each as any)["odata.type"];
@@ -124,6 +124,9 @@ export const listDataSelector = selector({
 
                 return each.InternalName;
             });
+
+        // Füge ID hinzu, da diese immer abgefragt werden sollte
+        select = uniq(["ID", ...select]);
 
         // Welche Felder expanded werden müssen
         const expand = fields
