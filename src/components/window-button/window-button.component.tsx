@@ -1,8 +1,9 @@
-import { isFunction } from "lodash";
-import { IButtonProps, PrimaryButton } from "office-ui-fabric-react";
+import { isEmpty, isFunction } from "lodash";
+import { IButtonProps, IconButton } from "office-ui-fabric-react";
 import * as React from "react";
 import { useRecoilValue } from "recoil";
 import { selectedItemsAtom } from "../../data/ui.data";
+import { warn } from "../../util/log.util";
 
 interface WindowButtonProps extends Omit<IButtonProps, "onClick"> {
     functionName: string /** Der Name der aufzurufenden Funktion. Diese muss im globalen window-Objekt verfügbar sein. */;
@@ -11,17 +12,26 @@ interface WindowButtonProps extends Omit<IButtonProps, "onClick"> {
 
 /** Rendert einen Button, welcher bei Klick eine im globalen window-Objekt hinterlegte Funktion ausführt. */
 export const WindowButton = (props: WindowButtonProps) => {
-    const { functionName } = props;
+    const { functionName, disabled, disabledWithoutSelection } = props;
 
     const selectedItems = useRecoilValue(selectedItemsAtom);
 
     const onClick = React.useCallback(() => {
         const anyWindow = window as any;
 
-        if (anyWindow[functionName] && isFunction(anyWindow[functionName])) {
-            anyWindow[functionName](selectedItems);
+        if (!anyWindow[functionName] || !isFunction(anyWindow[functionName])) {
+            warn(`Global function "${functionName}" is not yet initialized.`);
+            return;
         }
+
+        anyWindow[functionName](selectedItems);
     }, [functionName, selectedItems]);
 
-    return <PrimaryButton {...props} onClick={onClick} />;
+    return (
+        <IconButton
+            {...props}
+            disabled={disabled || (disabledWithoutSelection && isEmpty(selectedItems))}
+            onClick={onClick}
+        />
+    );
 };
