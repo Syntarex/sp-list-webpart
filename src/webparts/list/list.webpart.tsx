@@ -1,5 +1,9 @@
+import { PageContext } from "@microsoft/sp-page-context";
 import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
 import { sp } from "@pnp/sp";
+import { initializeIcons } from "@uifabric/icons";
+import * as dayjs from "dayjs";
+import "dayjs/locale/de";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Main } from "../../components/main.component";
@@ -13,10 +17,20 @@ export interface ListWebPartProps {
 }
 
 export default class ListWebPart extends BaseClientSideWebPart<ListWebPartProps> {
-    public async onInit(): Promise<void> {
-        log("Initializing PnPJS");
+    public static pageContext: PageContext;
 
+    public async onInit(): Promise<void> {
+        log("Initializing Icons.");
+        initializeIcons();
+
+        log("Initializing PageContext.");
+        ListWebPart.pageContext = this.context.pageContext;
+
+        log("Initializing PnPJS.");
         sp.setup({ spfxContext: this.context });
+
+        log("Initializing dayJS.");
+        dayjs.locale("de");
     }
 
     public render(): void {
