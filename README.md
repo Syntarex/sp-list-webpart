@@ -111,9 +111,48 @@ Zusätzlich gibt es im Root-Verzeichnis Dateien:
 -   `/package.json`: Metadaten zum Projekt, sowie eine Liste der Abhängigkeiten
 -   `/tsconfig.json`: Konfiguriert den TypeScript-Compiler
 
+## Integration von eigenem Code
+
+Es gibt einige global verfügbare Funktionen und Integrationsmöglichkeiten. Diese werden alle über das global verfügbare window-Objekt gesteuert.
+
+### Listendaten neuladen
+
+Sollten die Daten an anderer Stelle geändert werden, können die Listendaten von außen aktualisiert werden.
+
+```
+window["refresh"]();
+```
+
+### Button-Funktionalität
+
+Die im Header konfigurierbaren Buttons können mit eigener Logik versehen werden. Hierfür wird einfach der Name des Buttons als Funktion angegeben. Angenommen der Button heißt `approve`, dann würde der Code so aussehen:
+
+```
+window["approve"] = (selectedItems) => console.log(selectedItems);
+```
+
+Der Parameter `selectedItems` enthält alle vom Benutzer ausgewählten Listenelemente.
+
+### Zellen-Rendering überschreiben
+
+Das Rendering einer Zelle kann über das Window-Objekt überschrieben werden.
+Die eigene Rendering-Funktion muss eine React-Komponente zurückgeben, welche dann gerendert wird.
+Angenommen die Spalte heißt `Person`, würde der Code so aussehen:
+
+```
+window[`render-Person`] = (props) => {
+    ...
+}
+```
+
+Die übergebenen `props` enthalten die Felder `column`, `row`, `cell`.
+
+-   `column` enthält alle Informationen zur Spalte.
+-   `row` enthält alle Informationen zur Zeile (inkl. benachbarte Daten).
+-   `cell` enthält das Objekt, welches in der Zelle gerendert werden soll.
+
 ## TODOs:
 
 -   Boolfeld-Darstellung konfigurierbar machen (Ja/Nein oder CheckBox)
 -   Filter- und Sortierungen
--   Möglichkeit Rendering zu überschreiben
 -   Klassennamen

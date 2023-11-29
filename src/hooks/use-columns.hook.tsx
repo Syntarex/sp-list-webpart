@@ -66,6 +66,16 @@ export const useColumns = () => {
                             return null;
                         }
 
+                        // Prüfe ob Rendering für Zelle überschrieben wurde
+                        const customRenderingName = `rendering-${column.InternalName}`;
+                        const anyWindow = window as any;
+                        if (anyWindow[customRenderingName]) {
+                            const component = anyWindow[customRenderingName]({ column, row, cell: value });
+                            if (component) {
+                                return component;
+                            }
+                        }
+
                         // Anzeigeformat für Datum
                         // TODO: Konfigurierbar in WebPart machen
                         let dateFormat = "DD.MM.YYYY";
