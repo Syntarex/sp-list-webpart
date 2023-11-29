@@ -17,9 +17,12 @@ export const Header = (props: HeaderProps) => {
     return (
         <Stack wrap horizontal className={className} verticalAlign={"center"} tokens={{ childrenGap: 10 }}>
             <Stack.Item>
-                <WindowButton disabledWithoutSelection functionName={"testing"} iconProps={{ iconName: "Edit" }}>
-                    Teste mich
-                </WindowButton>
+                <WindowButton
+                    disabledWithoutSelection
+                    tooltipText={"Teste mich"}
+                    functionName={"testing"}
+                    iconProps={{ iconName: "Edit" }}
+                />
             </Stack.Item>
 
             <Stack.Item>

@@ -110,3 +110,11 @@ Zusätzlich gibt es im Root-Verzeichnis Dateien:
 -   `/gulpfile.js`: Steuert verschiedene Aspekte der SPFx-Buildchain. **Achtung: Bearbeite diese Datei nur, wenn du weißt was du tust.**
 -   `/package.json`: Metadaten zum Projekt, sowie eine Liste der Abhängigkeiten
 -   `/tsconfig.json`: Konfiguriert den TypeScript-Compiler
+
+## TODOs:
+
+-   Boolfeld-Darstellung konfigurierbar machen (Ja/Nein oder CheckBox)
+-   Refresh Funktion
+-   Filter- und Sortierungen
+-   Möglichkeit Rendering zu überschreiben
+-   Klassennamen
