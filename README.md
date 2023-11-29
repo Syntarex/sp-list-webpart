@@ -115,6 +115,13 @@ Zusätzlich gibt es im Root-Verzeichnis Dateien:
 
 Es gibt einige global verfügbare Funktionen und Integrationsmöglichkeiten. Diese werden alle über das global verfügbare window-Objekt gesteuert.
 
+### CSS
+
+Jede Zelle hat eine eigene CSS-Klasse, welche genutzt werden kann um Styling zu injecten.
+**Achtung: Solltest du dies über eine SPFx-Extension machen wollen, denke daran deinen CSS-Code in `:global` zu wrappen.**
+
+Angenommen eine Spalte heißt `Person` und eine Zeile hat die ID `4`, dann ist die zugehörige CSS-Klasse: `cell-Person-4`.
+
 ### Listendaten neuladen
 
 Sollten die Daten an anderer Stelle geändert werden, können die Listendaten von außen aktualisiert werden.
@@ -155,4 +162,3 @@ Die übergebenen `props` enthalten die Felder `column`, `row`, `cell`.
 
 -   Boolfeld-Darstellung konfigurierbar machen (Ja/Nein oder CheckBox)
 -   Filter- und Sortierungen
--   Klassennamen

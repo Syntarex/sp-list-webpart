@@ -134,7 +134,13 @@ export const useColumns = () => {
                         }
 
                         return (
-                            <Stack wrap horizontal verticalAlign={"center"} tokens={{ childrenGap: 5 }}>
+                            <Stack
+                                wrap
+                                horizontal
+                                className={`cell-${column.InternalName}-${row.ID}`}
+                                verticalAlign={"center"}
+                                tokens={{ childrenGap: 5 }}
+                            >
                                 {isArray(value) ? (
                                     value.map((each, index) => (
                                         <Stack.Item key={`value-${index}`}>{renderValue(each, dateFormat)}</Stack.Item>
