@@ -114,7 +114,6 @@ Zusätzlich gibt es im Root-Verzeichnis Dateien:
 ## TODOs:
 
 -   Boolfeld-Darstellung konfigurierbar machen (Ja/Nein oder CheckBox)
--   Refresh Funktion
 -   Filter- und Sortierungen
 -   Möglichkeit Rendering zu überschreiben
 -   Klassennamen
