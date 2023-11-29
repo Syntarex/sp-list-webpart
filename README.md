@@ -160,5 +160,4 @@ Die übergebenen `props` enthalten die Felder `column`, `row`, `cell`.
 
 ## TODOs:
 
--   Boolfeld-Darstellung konfigurierbar machen (Ja/Nein oder CheckBox)
 -   Filter- und Sortierungen
