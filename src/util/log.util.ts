@@ -5,3 +5,7 @@ export const log = (...data: any) => {
 export const warn = (...data: any) => {
     console.warn("⚠️ list-webpart", ...data);
 };
+
+export const error = (...data: any) => {
+    console.error("‼️ list-webpart", ...data);
+};
