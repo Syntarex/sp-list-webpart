@@ -1,6 +1,6 @@
 {
     "name": "sp-list-webpart",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "private": true,
     "main": "lib/index.js",
     "author": "Syntarex",
@@ -9,7 +9,7 @@
     },
     "scripts": {
         "prebuild": "npm run clean && npm run version-sync",
-        "preserve": "npm run clean",
+        "preserve": "npm run clean && npm run version-sync",
         "preship": "npm run clean && npm run version-sync",
         "build": "gulp bundle",
         "clean": "gulp clean && rimraf ./sharepoint/solution && rimraf ./release",
@@ -51,6 +51,7 @@
         "gulp": "3.9.1",
         "gulp-cli": "2.3.0",
         "rimraf": "3.0.2",
+        "source-map-loader": "^4.0.1",
         "typescript": "3.7.5"
     }
 }
