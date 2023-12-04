@@ -4,7 +4,10 @@ const gulp = require("gulp");
 const build = require("@microsoft/sp-build-web");
 const path = require("path");
 
+// warnings are aborting the ship task, so suppress them
 build.addSuppression(/Warning - \[sass\] The local CSS class .* is not camelCase and will not be type-safe./gi);
+build.addSuppression(/Warning - \[sass\] .* filename should end with module.scss/gi);
+build.addSuppression(/.*Cannot find source file.*/gi); // fix source map loader warnings
 
 // force use of projects specified typescript version
 const typeScriptConfig = require("@microsoft/gulp-core-build-typescript/lib/TypeScriptConfiguration");
