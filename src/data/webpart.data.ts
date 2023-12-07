@@ -7,12 +7,12 @@ export const webpartPropertiesAtom = atom<ListWebPartProps>({
     default: {
         listId: null,
         viewId: null,
-        pageSize: 50,
+        pageSize: 100,
     },
     effects: [
         ({ onSet }) => {
-            onSet((properties) => {
-                log("Webpart properties changed.", properties);
+            onSet((newProperties) => {
+                log("Webpart properties were set.", newProperties);
             });
         },
     ],

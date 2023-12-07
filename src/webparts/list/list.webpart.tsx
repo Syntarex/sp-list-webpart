@@ -1,15 +1,17 @@
 import { PageContext } from "@microsoft/sp-page-context";
-import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+import { BaseClientSideWebPart, IPropertyPaneConfiguration } from "@microsoft/sp-webpart-base";
 import { sp } from "@pnp/sp";
 import { initializeIcons } from "@uifabric/icons";
 import * as dayjs from "dayjs";
 import "dayjs/locale/de";
-import { MessageBar, MessageBarType, Text } from "office-ui-fabric-react";
+import { clone, update } from "lodash";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { ErrorBoundary } from "../../components/error-boundary/error-boundary.component";
 import { Main } from "../../components/main.component";
+import { PageSizeTextfield } from "../../components/property-pane/page-size-textfield.component";
 import { RecoilInitializer } from "../../components/recoil-initializer/recoil-initializer.component";
+import { CustomPropertyPaneField } from "../../util/custom-field.property-pane";
 import { log } from "../../util/log.util";
 
 export interface ListWebPartProps {
@@ -37,24 +39,15 @@ export default class ListWebPart extends BaseClientSideWebPart<ListWebPartProps>
     }
 
     public render(): void {
-        log("Rerendering webpart");
+        log("Rendering webpart.");
 
-        // Rendere nichts, wenn WebPart im Edit-Mode
-        // Die WebPart-Properties sollten nicht an zwei Stellen (WebPart & PropertyPane) gleichzeitig verwendet werden
-        if (document.location.href.indexOf("Mode=Edit") > -1) {
-            ReactDOM.render(
-                <MessageBar messageBarType={MessageBarType.warning}>
-                    <Text>Listen-WebPart kann während der Bearbeitung nicht gerendert werden.</Text>
-                </MessageBar>,
-                this.domElement,
-            );
-
-            return;
-        }
+        // Klone Properties, damit diese durch die Übergabe nicht gesperrt werden
+        // SPFx verhält sich hier komisch. Klone ich nicht, kann das PropertyPane kein Update mehr ausführen
+        const properties = clone(this.properties);
 
         ReactDOM.render(
             <React.Suspense fallback={null}>
-                <RecoilInitializer properties={this.properties}>
+                <RecoilInitializer properties={properties}>
                     <ErrorBoundary>
                         <Main />
                     </ErrorBoundary>
@@ -66,5 +59,31 @@ export default class ListWebPart extends BaseClientSideWebPart<ListWebPartProps>
 
     protected onDispose(): void {
         ReactDOM.unmountComponentAtNode(this.domElement);
+    }
+
+    protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
+        return {
+            pages: [
+                {
+                    groups: [
+                        {
+                            groupFields: [
+                                new CustomPropertyPaneField(
+                                    "pageSize",
+                                    this.properties.pageSize,
+                                    this.onPropertyChange.bind(this),
+                                    PageSizeTextfield,
+                                ),
+                            ],
+                        },
+                    ],
+                },
+            ],
+        };
+    }
+
+    private onPropertyChange(propertyPath: string, newValue: any) {
+        update(this.properties, propertyPath, () => newValue);
+        this.render();
     }
 }
