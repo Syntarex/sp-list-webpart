@@ -10,9 +10,7 @@ export const Loading = (props: LoadingProps) => {
         <React.Suspense
             fallback={
                 <Stack horizontalAlign={"center"} verticalAlign={"center"}>
-                    <Stack.Item>
-                        <Spinner />
-                    </Stack.Item>
+                    <Spinner />
                 </Stack>
             }
         >

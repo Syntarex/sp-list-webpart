@@ -2,6 +2,7 @@ import { Stack, Text } from "office-ui-fabric-react";
 import * as React from "react";
 import { useRecoilValue } from "recoil";
 import { listInfoSelector } from "../../data/list.data";
+import { webpartPropertiesAtom } from "../../data/webpart.data";
 import { WindowButton } from "../window-button/window-button.component";
 import styles from "./header.module.scss";
 
@@ -13,21 +14,15 @@ export const Header = (props: HeaderProps) => {
     const { className } = props;
 
     const listInfo = useRecoilValue(listInfoSelector);
+    const webpartProperties = useRecoilValue(webpartPropertiesAtom);
 
     return (
         <Stack wrap horizontal className={className} verticalAlign={"center"} tokens={{ childrenGap: 10 }}>
-            <Stack.Item>
-                <WindowButton
-                    disabledWithoutSelection
-                    tooltipText={"Teste mich"}
-                    functionName={"testing"}
-                    iconProps={{ iconName: "Edit" }}
-                />
-            </Stack.Item>
+            {webpartProperties.buttons.map((each, index) => (
+                <WindowButton key={`button-${index}`} {...each} />
+            ))}
 
-            <Stack.Item>
-                <Text className={styles.headline}>{listInfo.Title}</Text>
-            </Stack.Item>
+            <Text className={styles.headline}>{listInfo.Title}</Text>
         </Stack>
     );
 };

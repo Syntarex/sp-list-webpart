@@ -8,6 +8,7 @@ export const webpartPropertiesAtom = atom<ListWebPartProps>({
         listId: null,
         viewId: null,
         pageSize: 100,
+        buttons: [],
     },
     effects: [
         ({ onSet }) => {

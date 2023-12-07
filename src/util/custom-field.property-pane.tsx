@@ -2,6 +2,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 
 import { IPropertyPaneCustomFieldProps, IPropertyPaneField, PropertyPaneFieldType } from "@microsoft/sp-webpart-base";
+import { RecoilRoot } from "recoil";
 
 export class CustomPropertyPaneField implements IPropertyPaneField<IPropertyPaneCustomFieldProps> {
     public type: PropertyPaneFieldType = PropertyPaneFieldType.Custom;
@@ -38,7 +39,12 @@ export class CustomPropertyPaneField implements IPropertyPaneField<IPropertyPane
             this.elem = elem;
         }
 
-        ReactDOM.render(<this.Component value={this.value} onChange={this.onChange.bind(this)} />, this.elem);
+        ReactDOM.render(
+            <RecoilRoot>
+                <this.Component value={this.value} onChange={this.onChange.bind(this)} />
+            </RecoilRoot>,
+            this.elem,
+        );
     }
 
     private onChange(newValue: any) {

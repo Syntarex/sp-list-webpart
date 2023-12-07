@@ -8,7 +8,9 @@ import { Pager } from "./pager/pager.component";
 export const Main = () => {
     return (
         <Stack tokens={{ childrenGap: 10 }}>
-            <Header />
+            <Loading>
+                <Header />
+            </Loading>
 
             <Loading>
                 <List />

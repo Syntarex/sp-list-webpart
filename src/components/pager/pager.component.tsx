@@ -43,21 +43,15 @@ export const Pager = (props: PagerProps) => {
 
     return (
         <Stack horizontal horizontalAlign={"center"} verticalAlign={"center"} tokens={{ childrenGap: 20 }}>
-            <Stack.Item>
-                <IconButton disabled={page === 1} iconProps={{ iconName: "ChromeBack" }} onClick={onBackClicked} />
-            </Stack.Item>
+            <IconButton disabled={page === 1} iconProps={{ iconName: "ChromeBack" }} onClick={onBackClicked} />
 
-            <Stack.Item>
-                <Text className={styles.page}>{page}</Text>
-            </Stack.Item>
+            <Text className={styles.page}>{page}</Text>
 
-            <Stack.Item>
-                <IconButton
-                    disabled={page === pageCount}
-                    iconProps={{ iconName: "ChromeBackMirrored" }}
-                    onClick={onForwardClicked}
-                />
-            </Stack.Item>
+            <IconButton
+                disabled={page === pageCount}
+                iconProps={{ iconName: "ChromeBackMirrored" }}
+                onClick={onForwardClicked}
+            />
         </Stack>
     );
 };

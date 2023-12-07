@@ -9,8 +9,10 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { ErrorBoundary } from "../../components/error-boundary/error-boundary.component";
 import { Main } from "../../components/main.component";
+import { ButtonsConfigurator } from "../../components/property-pane/buttons-configurator/buttons-configurator.component";
 import { PageSizeTextfield } from "../../components/property-pane/page-size-textfield.component";
 import { RecoilInitializer } from "../../components/recoil-initializer/recoil-initializer.component";
+import { WindowButtonProps } from "../../components/window-button/window-button.component";
 import { CustomPropertyPaneField } from "../../util/custom-field.property-pane";
 import { log } from "../../util/log.util";
 
@@ -19,6 +21,7 @@ export interface ListWebPartProps {
     listId: string | null /** Die Liste, welche vom WebPart angezeigt wird. */;
     viewId: string | null /** Die Ansicht, der konfigurierten Liste, welche vom WebPart angezeigt wird. */;
     pageSize: number /** Wie viele Elemente pro Seite angezeigt werden sollen. */;
+    buttons: WindowButtonProps[];
 }
 
 export default class ListWebPart extends BaseClientSideWebPart<ListWebPartProps> {
@@ -73,6 +76,12 @@ export default class ListWebPart extends BaseClientSideWebPart<ListWebPartProps>
                                     this.properties.pageSize,
                                     this.onPropertyChange.bind(this),
                                     PageSizeTextfield,
+                                ),
+                                new CustomPropertyPaneField(
+                                    "buttons",
+                                    this.properties.buttons,
+                                    this.onPropertyChange.bind(this),
+                                    ButtonsConfigurator,
                                 ),
                             ],
                         },
