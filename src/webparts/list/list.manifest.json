@@ -13,10 +13,11 @@
             "description": { "default": "Shows a SharePoint list and provides a lot of cool features." },
             "officeFabricIconFontName": "ViewList",
             "properties": {
-                "listId": "4973f3a1-bedc-440d-888d-6df90eb35bba",
-                "viewId": "2f3db00b-2ef3-4813-a6ab-ef9ff9e68267",
+                "listId": "",
+                "viewId": "",
                 "pageSize": 50,
-                "buttons": []
+                "buttons": [],
+                "selectionMode": 0
             }
         }
     ]

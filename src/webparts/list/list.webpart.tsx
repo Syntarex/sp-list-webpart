@@ -5,6 +5,7 @@ import { initializeIcons } from "@uifabric/icons";
 import * as dayjs from "dayjs";
 import "dayjs/locale/de";
 import { clone, update } from "lodash";
+import { SelectionMode } from "office-ui-fabric-react";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { ErrorBoundary } from "../../components/error-boundary/error-boundary.component";
@@ -12,6 +13,7 @@ import { Main } from "../../components/main.component";
 import { ButtonsConfigurator } from "../../components/property-pane/buttons-configurator/buttons-configurator.component";
 import { ListIdSelector } from "../../components/property-pane/list-id-selector.component";
 import { PageSizeTextfield } from "../../components/property-pane/page-size-textfield.component";
+import { SelectionModeDropdown } from "../../components/property-pane/selection-mode-dropdown.component";
 import { ViewIdSelector } from "../../components/property-pane/view-id-selector.component";
 import { RecoilInitializer } from "../../components/recoil-initializer/recoil-initializer.component";
 import { WindowButtonProps } from "../../components/window-button/window-button.component";
@@ -24,6 +26,7 @@ export interface ListWebPartProps {
     viewId: string | null /** Die Ansicht, der konfigurierten Liste, welche vom WebPart angezeigt wird. */;
     pageSize: number /** Wie viele Elemente pro Seite angezeigt werden sollen. */;
     buttons: WindowButtonProps[];
+    selectionMode: SelectionMode;
 }
 
 export default class ListWebPart extends BaseClientSideWebPart<ListWebPartProps> {
@@ -90,6 +93,12 @@ export default class ListWebPart extends BaseClientSideWebPart<ListWebPartProps>
                                     this.properties.pageSize,
                                     this.onPropertyChange.bind(this),
                                     PageSizeTextfield,
+                                ),
+                                new CustomPropertyPaneField(
+                                    "selectionMode",
+                                    this.properties.selectionMode,
+                                    this.onPropertyChange.bind(this),
+                                    SelectionModeDropdown,
                                 ),
                                 new CustomPropertyPaneField(
                                     "buttons",
