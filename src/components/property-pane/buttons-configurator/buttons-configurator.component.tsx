@@ -1,6 +1,7 @@
-import { clone, isEqual, pullAt } from "lodash";
+import { clone, pullAt } from "lodash";
 import { IconButton, Stack, Text } from "office-ui-fabric-react";
 import * as React from "react";
+import { isArrayEqual } from "../../../util/array.util";
 import { WindowButtonProps } from "../../window-button/window-button.component";
 import { ButtonsConfiguratorItem } from "./buttons-configurator-item.component";
 
@@ -21,7 +22,7 @@ export const ButtonsConfigurator = (props: ButtonsConfiguratorProps) => {
     // Aktualisiere Webpart Properties, sollte sich Arbeitskopie ändern
     React.useEffect(() => {
         // Nichts hat sich verändert
-        if (isEqual(buttons, value)) {
+        if (isArrayEqual(buttons, value)) {
             return;
         }
 
