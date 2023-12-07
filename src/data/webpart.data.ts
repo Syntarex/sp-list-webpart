@@ -5,9 +5,9 @@ import { ListWebPartProps } from "../webparts/list/list.webpart";
 export const webpartPropertiesAtom = atom<ListWebPartProps>({
     key: "webpart-properties",
     default: {
-        listId: null,
-        viewId: null,
-        pageSize: 100,
+        listId: "",
+        viewId: "",
+        pageSize: 50,
         buttons: [],
     },
     effects: [

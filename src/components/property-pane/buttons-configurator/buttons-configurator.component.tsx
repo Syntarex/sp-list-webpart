@@ -1,7 +1,7 @@
 import { clone, pullAt } from "lodash";
 import { IconButton, Stack, Text } from "office-ui-fabric-react";
 import * as React from "react";
-import { isArrayEqual } from "../../../util/array.util";
+import { log } from "../../../util/log.util";
 import { WindowButtonProps } from "../../window-button/window-button.component";
 import { ButtonsConfiguratorItem } from "./buttons-configurator-item.component";
 
@@ -21,13 +21,9 @@ export const ButtonsConfigurator = (props: ButtonsConfiguratorProps) => {
 
     // Aktualisiere Webpart Properties, sollte sich Arbeitskopie ändern
     React.useEffect(() => {
-        // Nichts hat sich verändert
-        if (isArrayEqual(buttons, value)) {
-            return;
-        }
-
+        log("test");
         onChange(buttons);
-    }, [buttons, value, onChange]);
+    }, [buttons, onChange]);
 
     const updateButton = React.useCallback(
         (index: number, newValue: WindowButtonProps) => {

@@ -40,9 +40,11 @@ export class CustomPropertyPaneField implements IPropertyPaneField<IPropertyPane
         }
 
         ReactDOM.render(
-            <RecoilRoot>
-                <this.Component value={this.value} onChange={this.onChange.bind(this)} />
-            </RecoilRoot>,
+            <div style={{ marginBottom: "20px" }}>
+                <RecoilRoot>
+                    <this.Component value={this.value} onChange={this.onChange.bind(this)} />
+                </RecoilRoot>
+            </div>,
             this.elem,
         );
     }

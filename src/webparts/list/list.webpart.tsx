@@ -10,7 +10,9 @@ import * as ReactDOM from "react-dom";
 import { ErrorBoundary } from "../../components/error-boundary/error-boundary.component";
 import { Main } from "../../components/main.component";
 import { ButtonsConfigurator } from "../../components/property-pane/buttons-configurator/buttons-configurator.component";
+import { ListIdSelector } from "../../components/property-pane/list-id-selector.component";
 import { PageSizeTextfield } from "../../components/property-pane/page-size-textfield.component";
+import { ViewIdSelector } from "../../components/property-pane/view-id-selector.component";
 import { RecoilInitializer } from "../../components/recoil-initializer/recoil-initializer.component";
 import { WindowButtonProps } from "../../components/window-button/window-button.component";
 import { CustomPropertyPaneField } from "../../util/custom-field.property-pane";
@@ -71,6 +73,18 @@ export default class ListWebPart extends BaseClientSideWebPart<ListWebPartProps>
                     groups: [
                         {
                             groupFields: [
+                                new CustomPropertyPaneField(
+                                    "listId",
+                                    this.properties.listId,
+                                    this.onPropertyChange.bind(this),
+                                    ListIdSelector,
+                                ),
+                                new CustomPropertyPaneField(
+                                    "viewId",
+                                    this.properties.viewId,
+                                    this.onPropertyChange.bind(this),
+                                    ViewIdSelector,
+                                ),
                                 new CustomPropertyPaneField(
                                     "pageSize",
                                     this.properties.pageSize,

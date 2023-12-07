@@ -41,6 +41,11 @@ export const Pager = (props: PagerProps) => {
         setPage(page + 1);
     }, [page, pageCount, setPage]);
 
+    // Pager muss nicht angezeigt werden, da wir nur eine Seite haben
+    if (pageCount <= 1) {
+        return null;
+    }
+
     return (
         <Stack horizontal horizontalAlign={"center"} verticalAlign={"center"} tokens={{ childrenGap: 20 }}>
             <IconButton disabled={page === 1} iconProps={{ iconName: "ChromeBack" }} onClick={onBackClicked} />

@@ -29,8 +29,9 @@ export const PageSizeTextfield = (props: PageSizeTextfieldProps) => {
     return (
         <Stack tokens={{ childrenGap: 5 }}>
             <TextField
-                label={"Seitengröße"}
+                label={"Seitengröße*"}
                 value={text}
+                maxLength={4}
                 onChange={(ev, newValue) => setText(newValue ?? "")}
                 onBlur={onBlur}
             />
