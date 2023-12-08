@@ -163,3 +163,8 @@ Die übergebenen `props` enthalten die Felder `column`, `row`, `cell`.
 -   Filter- und Sortierungen
 -   WebPart Properties in einzelne Atome aussplitten um kompletten Render zu vermeiden, wenn sich einzelne Props ändern
 -   ListId und ViewId per Selector aussuchbar machen
+-   Link- oder Bild-Spalte
+-   Spaltenbreiten konfigurierbar machen
+    -Spaltenbreiten im LocalStorage machen
+-   Filter-Query in WebPart-Einstellungen
+-   Listen-Titel konfigurierbar machen (auch ausblendbar)
