@@ -160,11 +160,19 @@ Die übergebenen `props` enthalten die Felder `column`, `row`, `cell`.
 
 ## TODOs:
 
--   Filter- und Sortierungen
--   WebPart Properties in einzelne Atome aussplitten um kompletten Render zu vermeiden, wenn sich einzelne Props ändern
--   ListId und ViewId per Selector aussuchbar machen
--   Link- oder Bild-Spalte
--   Spaltenbreiten konfigurierbar machen
-    -Spaltenbreiten im LocalStorage machen
--   Filter-Query in WebPart-Einstellungen
--   Listen-Titel konfigurierbar machen (auch ausblendbar)
+1/10 = höchste, 10/10 = niedrigste
+
+-   1/10 Listen-Titel ausblendbar machen und standardmäßig von Ansicht nehmen
+-   1/10 Maximale Seiten in Pager anzeigen
+-   2/10 Spaltenbreiten konfigurierbar machen
+-   3/10 Spaltenbreiten im LocalStorage machen
+-   4/10 Filter- und Sortierungen
+-   5/10 ListId und ViewId per Selector aussuchbar machen
+-   6/10 Filter von außen setzbar machen
+-   7/10 Choice-Felder Styling konfigurierbar machen (Boxen oder einfach nur Text)
+-   8/10 Link- oder Bild-Spalte
+-   9/10 Spalten-Reihenfolge aus Ansicht
+-   10/10 Filter-Query in WebPart-Einstellungen
+
+-   11/10 WebPart Properties in einzelne Atome aussplitten um kompletten Render zu vermeiden, wenn sich einzelne Props ändern
+-   11/10 Listen-Webpart nur anzeigen wenn bestimmter Anchor offen (# im Url)
